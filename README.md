@@ -75,7 +75,8 @@ Browse to **http://127.0.0.1:52773/csp/sys/UtilHome.csp** and log in with the de
 For custom [volumes](https://docs.docker.com/engine/storage/volumes/), entry‑points, or ARM images see the official [Docker guide](https://docs.docker.com/manuals/).
 
 ## Deploying OHDSI Broadsea and Connecting to InterSystems IRIS
-![OHDSI Broadsea](OHDSI-Broadsea.png)
+![OHDSI Broadsea](OHDSI_Broadsea.png)
+
 *Fig. 1. OHDSI Broadsea Deployment Architecture*
 
 This section provisions the full OHDSI tool‑chain (ATLAS, WebAPI, HADES, etc.) using the official [Broadsea repository](https://www.ohdsi.org/wp-content/uploads/2023/10/Londhe-Ajit_Broadsea-3.0-BROADening-the-ohdSEA_2023symposium-Ajit-Londhe.pdf).
@@ -94,6 +95,7 @@ git clone https://github.com/OHDSI/Broadsea.git
 - WEBAPI_GITHUB_URL="https://github.com/OHDSI/WebAPI.git#rc-2.13.0"
 - DOCKER_ARCH="linux/amd64"
 - WEBAPI_ADDITIONAL_JDBC_FILE_PATH="../jdbc/none.jar"
+
 + WEBAPI_GITHUB_URL="https://github.com/OHDSI/WebAPI.git#master"
 + DOCKER_ARCH="linux/arm64"  # Only for mac with apple silicon
 + WEBAPI_ADDITIONAL_JDBC_FILE_PATH="../jdbc/intersystems-jdbc-3.10.3.jar"
