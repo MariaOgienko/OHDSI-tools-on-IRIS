@@ -1,6 +1,6 @@
 # Instructions for Integrating OHDSI/Broadsea with the InterSystems IRIS Data Platform
 
-##Summary
+## Summary
 This document provides step‑by‑step instructions for installing InterSystems IRIS, deploying the OHDSI Broadsea tool‑stack, and connecting the two platforms. It is intended for engineers or data scientists who need a reproducible procedure that works on Linux, macOS, or Windows (via Docker). Screenshots referenced in the original draft are preserved; if you are viewing this in a text‑only context, follow the descriptive captions instead.
 
 ### Prerequisites
@@ -76,8 +76,7 @@ For custom [volumes](https://docs.docker.com/engine/storage/volumes/), entry‑p
 
 ## Deploying OHDSI Broadsea and Connecting to InterSystems IRIS
 ![OHDSI Broadsea](OHDSI_Broadsea.png)
-
-*Fig. 1. OHDSI Broadsea Deployment Architecture*
+                             *Fig. 1. OHDSI Broadsea Deployment Architecture*
 
 This section provisions the full OHDSI tool‑chain (ATLAS, WebAPI, HADES, etc.) using the official [Broadsea repository](https://www.ohdsi.org/wp-content/uploads/2023/10/Londhe-Ajit_Broadsea-3.0-BROADening-the-ohdSEA_2023symposium-Ajit-Londhe.pdf).
 
@@ -148,6 +147,8 @@ docker cp "/your_path/to/replacementPatterns.csv" <container_id>:/usr/local/lib/
 
 9. Restart  the affected container via the Docker Desktop UI.
 Once all containers are healthy, open http://127.0.0.1 to access ATLAS and other services.
+![OHDSI__Broadsea](Broadsea.png)
+       Fig. 2. Applications in OHDSI/Broadsea
 
 ## Preparing HADES (RStudio Server)
 
@@ -169,8 +170,8 @@ conn <- DatabaseConnector::connect(connectionDetails)
 ```
 
 3. Update R packages from the Packages tab. Click Update in RStudio’s Packages panel.
-
-   *Fig. 3. Packages in Rstudio*
+![Hades](Hades_preparation.png)
+                               *Fig. 3. Packages in Rstudio*
 
 4. Run Achilles (if OMOP CDM 5.4 schema already exists in IRIS DB and you already have the dataset in IRIS)
 Run code in RStudio:
@@ -204,8 +205,8 @@ In HADES (RStudio Server), call **CommonDataModel::executeDdl()**, pointing it a
 
 ### Note Vocabulary Size Constraints
 Depending on your dataset, you may need to download additional vocabularies separately. These can be obtained from the official OMOP vocabulary repository at [https://athena.ohdsi.org](https://athena.ohdsi.org). To do this, register or log in, go to the *“Download”* section (Fig. 4), select the vocabularies relevant to your use case, and generate a download package.
-
-*Fig. 4. Standardized Vocabularies in Athena*
+![Hades](athena_download.png)
+                    *Fig. 4. Standardized Vocabularies in Athena*
 
 The Community Edition cannot store the full Athena vocabulary set. The following vocabularies are typically sufficient: ICD10CM, ICD9CM, ICD9Proc, CPT4, HCPCS, NDC, RxNorm, RxNorm Extension, SNOMED, LOINC, Visit Type, Drug Type, Procedure Type, Condition Type, Observation Type, Death Type, Note Type, Measurement Type, Device Type, Cohort Type, Gender, Race, Ethnicity, Domain, Relationship, Vocabulary, Concept Class, CDM, Type Concept, UCUM.
 
